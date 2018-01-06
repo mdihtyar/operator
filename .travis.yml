@@ -1,0 +1,5 @@
+---
+  sudo: enabled
+
+  script:
+    - ./install.sh
