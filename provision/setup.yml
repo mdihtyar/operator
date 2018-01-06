@@ -1,0 +1,8 @@
+---
+  - hosts: default
+    become: true
+    vars:
+      version: "unknown"
+    pre_tasks:
+      - debug:
+          msg: "### Deployment of operator application by version: {{ version }} ###"
