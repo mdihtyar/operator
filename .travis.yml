@@ -9,7 +9,7 @@
     - docker build -t ${IMAGE_NAME} ./tests/
 
   script:
-    - docker run -d -it --privileged -v $(pwd):/operator -w /operator --tty ${TEST_IMAGE} bash
+    - docker run -d -it --privileged -v $(pwd):/operator -w /operator --tty ${IMAGE_NAME} bash
     - docker exec $(docker ps -l -q) ./install.sh
 
   after_script:
