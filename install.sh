@@ -38,6 +38,7 @@ function install_requirements {
         echo -e "Current ansible version is: $(ansible --version | head -1)\nInstalling requiremented ansible==${ANSIBLE_VERSION}"
         pip install ansible==${ANSIBLE_VERSION}
     fi
+    ansible-playbook -i provision/inventory provision/requirements.yml
     return 0
 }
 # ------------------------------------------------------------------------------

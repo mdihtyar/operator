@@ -1,0 +1,12 @@
+---
+  - hosts: default
+    become: true
+    vars:
+      version: "unknown"
+    tasks:
+      - name: "Installing 3rd-party ansible roles."
+        shell: ansible-galaxy install {{ item }} > /dev/null
+        register: st
+        changed_when: st.stderr == ""
+        with_items:
+          - "geerlingguy.apache"
