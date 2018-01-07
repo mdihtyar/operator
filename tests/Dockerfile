@@ -8,6 +8,6 @@ LABEL mainteiner="devops@onix-systems.com"
 RUN apt-get update && \
     apt-get install -y \
       git \
-      lsb_release \
+      lsb-release \
       sudo && \
     apt-get clean
