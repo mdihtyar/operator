@@ -4,7 +4,7 @@ This repository contains an example to interconnect IP-PBX Asterisk with operato
 Operator can analyze calls history and listen calls records when it is required.
 
 ## Requirements
-* Ubuntu 16.04 server
+* Ubuntu 14.04 or 16.04 server
 * MySQL
 * php 5.6 (for running operator management console)
 * IP-PBX Asterisk

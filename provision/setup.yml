@@ -5,4 +5,14 @@
       version: "unknown"
     pre_tasks:
       - debug:
-          msg: "### Deployment of operator application by version: {{ version }} ###"
+          msg: "Deployment of operator application by version: {{ version }}"
+
+      - name: "Installing 3rd-party ansible roles."
+        shell: ansible-galaxy install {{ item }} > /dev/null
+        register: st
+        changed_when: st.stderr == ""
+        with_items:
+          - "geerlingguy.apache"
+
+    roles:
+      - { role: geerlingguy.apache }
