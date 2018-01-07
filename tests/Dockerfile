@@ -1,9 +1,9 @@
 ARG OS=ubuntu
-ARG CODE=xenial
+ARG CODENAMW=xenial
 
-FROM ubuntu:${CODE}
+FROM ${OS}:${CODENAME}
 
-LABEL mainteiner="devops@onix-systems.com"
+LABEL maintainer="devops@onix-systems.com"
 
 RUN apt-get update && \
     apt-get install -y \
