@@ -1,5 +1,5 @@
 ARG OS=ubuntu
-ARG CODENAMW=xenial
+ARG CODENAME=xenial
 
 FROM ${OS}:${CODENAME}
 
