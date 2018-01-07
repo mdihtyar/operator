@@ -14,12 +14,19 @@ This example shows how can be connected GSM gateway like **OpenVox VS-GW1202-4G*
 
 ## Usage
 
-At first dedicate Ubuntu server for running application.
+1. At first dedicate Ubuntu server for running application.
+1. Please specify db passwords for application.
+1. Launch next list of instructions.
 
 ```shell
 
 $ git clone https://github.com/mdihtyar/operator.git
 $ cd operator
+
+$ export MYSQL_ROOT_PASSWORD=root_password
+$ export OPERATOR_DB_PASSWORD=operator_db_password
+$ export ASTERISK_DB_PASSWORD=asterisk_db_password
+
 $ ./install.sh
 
 ```
