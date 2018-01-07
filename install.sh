@@ -45,10 +45,11 @@ function install_requirements {
 msg "Installation of operator application"
 
 printf "Checking OS. "
-if [ "$(lsb_release -i -s | tr [:upper:] [:lower:])" != "ubuntu" ] || [ "$(lsb_release -c -s)" != "xenial" ]; then
+if [ "$(lsb_release -i -s | tr [:upper:] [:lower:])" == "ubuntu" ] && [ "$(lsb_release -c -s)" == "xenial" ] || [ "$(lsb_release -c -s)" == "trusty" ] ; then
+     echo "OK"
+else
     error "Provided operation systems is not suitable for this application"
 fi
-echo "OK"
 
 printf "Installing required software. "
 install_requirements &> /dev/null
