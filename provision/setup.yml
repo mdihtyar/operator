@@ -47,4 +47,4 @@
       - geerlingguy.php
       - geerlingguy.apache
       - geerlingguy.phpmyadmin
-      - project
+      # - project

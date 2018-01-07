@@ -9,7 +9,7 @@
     - docker build -t ${IMAGE_NAME} ./tests/
 
   script:
-    - docker run -d --privileged -v $(pwd):/operator -w /operator -e TERM=xterm --tty ${IMAGE_NAME} bash
+    - docker run -d --privileged -v $(pwd):/operator --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro -w /operator -e TERM=xterm --tty ${IMAGE_NAME} bash
     - docker exec --tty $(docker ps -l -q) ./install.sh
 
   after_script:
