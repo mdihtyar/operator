@@ -1,3 +1,11 @@
 ---
+  project_folder: "../../"
+  source_folder: "{{ project_folder }}/operator"
+
+  operator_db_name: "operator"
+  operator_db_user: "operator"
+  # operator_db_password: "password"
+  operator_db_scheme_file: "{{ source_folder }}/conf/operator.sql"
+
   configuration_templates:
     - "{{ source_folder }}/conf/main_conf.php"

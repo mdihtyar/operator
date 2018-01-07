@@ -1,6 +1,14 @@
 ---
-  - name: "Generating configuration files from tempplates"
+  - name: "Generating configuration files from tempplates."
     template:
       src: "{{ item | basename }}.j2"
       dest: "{{ item }}"
     with_items: "{{ configuration_templates }}"
+
+  - name: "Restoring operator DB scheme."
+    mysql_db:
+      name: "{{ operator_db_name }}"
+      login_user: "{{ operator_db_user }}"
+      login_password: "{{ operator_db_password }}"
+      state: import
+      target: "{{ operator_db_scheme_file }}"

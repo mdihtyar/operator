@@ -9,8 +9,8 @@
     - docker build -t ${IMAGE_NAME} ./tests/
 
   script:
-    - docker run -d -it --privileged -v $(pwd):/operator -w /operator --tty ${IMAGE_NAME} bash
-    - docker exec --tty -e TERM=xterm $(docker ps -l -q) ./install.sh
+    - docker run -d --privileged -v $(pwd):/operator -w /operator -e TERM=xterm --tty ${IMAGE_NAME} bash
+    - docker exec --tty $(docker ps -l -q) ./install.sh
 
   after_script:
     - docker stop -t 0 $(docker ps -l -q)

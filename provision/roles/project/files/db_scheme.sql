@@ -1,1 +1,0 @@
-../../../../operator/conf/operator.sql
