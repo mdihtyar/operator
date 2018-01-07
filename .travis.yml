@@ -1,5 +1,18 @@
 ---
-  sudo: enabled
+  services:
+    - docker
+
+  env:
+    IMAGE_NAME: "test"
+
+  before_script:
+    - docker build -t ${IMAGE_NAME} ./tests/
 
   script:
-    - ./install.sh
+    - docker run -d -it --privileged -v $(pwd):/operator -w /operator --tty ${TEST_IMAGE} bash
+    - docker exec $(docker ps -l -q) ./install.sh
+
+  after_script:
+    - docker stop -t 0 $(docker ps -l -q)
+    - docker rm $(docker ps -l -q)
+    - docker rmi ${IMAGE_NAME}
