@@ -6,6 +6,7 @@ cd $(dirname $0)
 # Variables
 ANSIBLE_VERSION="2.4"
 VERSION=$([ -e version ] && echo $(cat version)$(printf ".";git rev-parse --short=16 HEAD || echo "") || echo "unknown")
+PROJECT_FOLDER=$(pwd)
 
 # Common functions
 # ------------------------------------------------------------------------------
@@ -38,15 +39,15 @@ function install_requirements {
         echo -e "Current ansible version is: $(ansible --version | head -1)\nInstalling requiremented ansible==${ANSIBLE_VERSION}"
         pip install ansible==${ANSIBLE_VERSION}
     fi
-    ansible-playbook -i provision/inventory provision/requirements.yml
+    ansible-galaxy install -r provision/requirements.yml
     return 0
 }
 # ------------------------------------------------------------------------------
 
 msg "Installation of operator application"
 
-printf "Checking OS. "
-if [ "$(lsb_release -i -s | tr [:upper:] [:lower:])" == "ubuntu" ] && [ "$(lsb_release -c -s)" == "xenial" ] || [ "$(lsb_release -c -s)" == "trusty" ] ; then
+printf "Checking Operation System. "
+if [ "$(lsb_release -c -s)" == "xenial" ] || [ "$(lsb_release -c -s)" == "trusty" ] ; then
      echo "OK"
 else
     error "Provided operation systems is not suitable for this application"
@@ -61,4 +62,4 @@ echo "OK"
 
 echo "Deployment of the application."
 cd provision
-ansible-playbook -i inventory --extra-vars="{version: ${VERSION}}" setup.yml
+ansible-playbook -i inventory --extra-vars="{version: ${VERSION}, project_folder: ${PROJECT_FOLDER}}" setup.yml

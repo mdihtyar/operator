@@ -1,0 +1,6 @@
+---
+  - name: "Generating configuration files from tempplates"
+    template:
+      src: "{{ item | basename }}.j2"
+      dest: "{{ item }}"
+    with_items: "{{ configuration_templates }}"

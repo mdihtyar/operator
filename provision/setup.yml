@@ -3,9 +3,52 @@
     become: true
     vars:
       version: "unknown"
+      project_folder: "{{ lookup('pipe', 'pwd') }}"
+      source_folder: "{{ project_folder }}/operator"
+      operator_db_user: "operator"
+      operator_db_password: "{{ lookup('env', 'OPERATOR_DB_PASSWORD') }}"
+      operator_db_name: "operator"
+      asterisk_db_user: "asterisk"
+      asterisk_db_password: "{{ lookup('env', 'ASTERISK_DB_PASSWORD') }}"
+      asterisk_db_name: "asterisk"
+      asterisk_ip_address: "127.0.0.1"
+      # Apache2 settings
+      apache_remove_default_vhost: true
+      apache_vhosts:
+        - servername: "local.operator"
+          documentroot: "{{ project_folder }}/operator"
+      apache_packages:
+        - libapache2-mod-php
+      # MySQL settings
+      mysql_root_password: "{{ lookup('env', 'MYSQL_ROOT_PASSWORD')}}"
+      mysql_databases:
+        - name: "{{ operator_db_name }}"
+          encoding: utf8
+          collation: utf8_general_ci
+        - name: "{{ asterisk_db_name }}"
+          encoding: utf8
+          collation: utf8_general_ci
+      mysql_users:
+        - name: "{{ operator_db_user }}"
+          host: "localhost"
+          password: "{{ operator_db_password }}"
+          priv: "{{ operator_db_name }}.*:ALL"
+        - name: "{{ operator_db_user }}"
+          host: "localhost"
+          password: "{{ operator_db_password }}"
+          priv: "{{ asterisk_db_name }}.*:ALL"
+        - name: "{{ asterisk_db_user }}"
+          host: "localhost"
+          password: "{{ asterisk_db_password }}"
+          priv: "{{ asterisk_db_name }}.*:ALL"
+
     pre_tasks:
       - debug:
           msg: "Deployment of operator application by version: {{ version }}"
 
     roles:
+      - geerlingguy.mysql
+      - geerlingguy.php
       - geerlingguy.apache
+      - geerlingguy.phpmyadmin
+      - project

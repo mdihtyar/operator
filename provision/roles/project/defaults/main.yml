@@ -1,0 +1,3 @@
+---
+  configuration_templates:
+    - "{{ source_folder }}/conf/main_conf.php"
