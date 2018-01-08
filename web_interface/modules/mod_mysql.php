@@ -18,7 +18,7 @@ class MySQLClient {
 	function Close() {
 	    return mysqli_close($this->dblink);
 	}
-	// Execute SQL query
+	// Executing of the SQL query
 	function Query($query_string,$print_query=false) {
 	    if ($print_query) {
       	print $query_string."<br>\n";
@@ -57,7 +57,7 @@ class MySQLClient {
 	}
 	// Count the number of records, that are corresponding to the condition of select
 	function RecordsCount($tbl_name,$query="") {
-	    $tbl_name = mysqli_real_escape_string($this->dblink, $tbl_name);
+	    $tbl_name = $this->real_escape_string($tbl_name);
 	    if ($this->TableExist($tbl_name)) {
     		if ($this->Query("SELECT count(*) as rec_count FROM $tbl_name".((trim($query)!="")?" WHERE $query":""))) {
     		    $res = $this->GetLastResult();
@@ -70,8 +70,8 @@ class MySQLClient {
 	}
 	// Return content from the table by user's request
 	function GetRecords($tbl_name,$fields="*",$query="") {
-	    $tbl_name = mysqli_real_escape_string($tbl_name);
-	    $fields = mysqli_real_escape_string($fields);
+	    $tbl_name = $this->real_escape_string($tbl_name);
+	    $fields = $this->real_escape_string($fields);
 	    if ($this->TableExist($tbl_name)) {
     		if ($this->Query("SELECT $fields FROM $tbl_name".((trim($query)!="")?" WHERE $query":""))) {
     		    $res = $this->GetLastResult();
@@ -82,5 +82,9 @@ class MySQLClient {
 	    }
 	    return false;
 	}
+  // wrap mysqli_real_escape function
+  function real_escape_string($text) {
+      return mysqli_real_escape_string($this->dblink, $text);
+  }
 }
 ?>
