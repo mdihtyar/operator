@@ -6,8 +6,8 @@
     IMAGE_NAME: "geerlingguy/docker-ubuntu1604-ansible"
 
   script:
-    - docker run -d --privileged -v $(pwd):/operator -w /operator -e TERM=xterm -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} --tty ${IMAGE_NAME} bash
-    - docker exec --tty $(docker ps -l -q) bash -c "apt-get update; apt-get install -y git lsb-release sudo" 
+    - docker run -d --privileged -v $(pwd):/operator -w /operator -e TERM=xterm -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -e OPERATOR_DB_PASSWORD=${OPERATOR_DB_PASSWORD} -e ASTERISK_DB_PASSWORD=${ASTERISK_DB_PASSWORD} --tty ${IMAGE_NAME} bash
+    - docker exec --tty $(docker ps -l -q) bash -c "apt-get update; apt-get install -y git lsb-release sudo"
     - docker exec --tty $(docker ps -l -q) ./install.sh
 
   after_script:
