@@ -1,4 +1,17 @@
 ---
+  - name: "Creating tmp folder for project: {{ project_tmp_folder }}."
+    file:
+      path: "{{ project_tmp_folder }}"
+      state: directory
+      mode: "{{ tmp_folder_mode }}"
+      owner: "{{ tmp_folder_owner }}"
+
+  - name: "Checking tmp folder's mode."
+    stat:
+      path: "{{ project_tmp_folder }}"
+    register: tmp_folder
+    failed_when: tmp_folder.stat.mode != tmp_folder_mode
+
   - name: "Generating configuration files from tempplates."
     template:
       src: "{{ item | basename }}.j2"

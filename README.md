@@ -1,4 +1,7 @@
 # Operator [![Build Status](https://travis-ci.org/mdihtyar/operator.svg?branch=master)](https://travis-ci.org/mdihtyar/operator)
+
+Status: **in development**
+
 This repository contains an example to interconnect IP-PBX Asterisk with operator for receiving calls and other different actions.
 
 Operator can analyze calls history and listen calls records when it is required.

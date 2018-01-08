@@ -4,7 +4,7 @@
     vars:
       version: "unknown"
       project_folder: "{{ lookup('pipe', 'pwd') }}"
-      source_folder: "{{ project_folder }}/operator"
+      source_folder: "{{ project_folder }}/web_interface"
       operator_db_user: "operator"
       operator_db_password: "{{ lookup('env', 'OPERATOR_DB_PASSWORD') }}"
       operator_db_name: "operator"
@@ -16,7 +16,7 @@
       apache_remove_default_vhost: true
       apache_vhosts:
         - servername: "local.operator"
-          documentroot: "{{ project_folder }}/operator"
+          documentroot: "{{ source_folder }}"
       apache_packages:
         - libapache2-mod-php
       # MySQL settings
@@ -47,4 +47,4 @@
       - geerlingguy.php
       - geerlingguy.apache
       - geerlingguy.phpmyadmin
-      # - project
+      - project

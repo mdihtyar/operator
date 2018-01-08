@@ -1,6 +1,10 @@
 ---
+  project_name: "operator"
   project_folder: "../../"
-  source_folder: "{{ project_folder }}/operator"
+  source_folder: "{{ project_folder }}/web_interface"
+  project_tmp_folder: "/var/{{ project_name }}/tmp"
+  tmp_folder_mode: "0700"
+  tmp_folder_owner: "www-data"
 
   operator_db_name: "operator"
   operator_db_user: "operator"
