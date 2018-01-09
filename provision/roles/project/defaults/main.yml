@@ -13,3 +13,10 @@
 
   configuration_templates:
     - "{{ source_folder }}/conf/main_conf.php"
+
+  admin_users:
+    - login: "user1"
+      pass: "pass1"
+      is_admin: true
+    - login: "user2"
+      pass: "pass2"

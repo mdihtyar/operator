@@ -25,3 +25,13 @@
       login_password: "{{ operator_db_password }}"
       state: import
       target: "{{ operator_db_scheme_file }}"
+
+  - name: "Creating admin user."
+    shell: |
+      A=$(mysql -u{{ operator_db_name }} -p{{ operator_db_password}} {{operator_db_name }} -sN -e "SELECT DISTINCT login FROM tbl_users WHERE login='{{ item.login }}';")
+      if [ "$A" != "{{ item.login }}" ]; then
+          mysql -u{{ operator_db_user }} -p{{ operator_db_password }} {{ operator_db_name }} -e "INSERT INTO tbl_users (login,pass,admin_user) VALUES ('{{ item.login }}','{{ item.pass }}',{{ 1 if item.is_admin is defined and item.is_admin == true else 0 }});"
+      else
+          mysql -u{{ operator_db_user }} -p{{ operator_db_password }} {{ operator_db_name }} -e "UPDATE tbl_users SET pass='{{ item.pass }}', admin_user={{ 1 if item.is_admin is defined and item.is_admin == true else 0 }} WHERE login='{{ item.login }}';"
+      fi
+    with_items: "{{ users }}"

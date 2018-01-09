@@ -4,7 +4,7 @@
     vars:
       version: "unknown"
       project_folder: "{{ lookup('pipe', 'pwd') }}"
-      source_folder: "{{ project_folder }}/web_interface"
+      source_folder: "{{ project_folder }}/source"
       operator_db_user: "operator"
       operator_db_password: "{{ lookup('env', 'OPERATOR_DB_PASSWORD') }}"
       operator_db_name: "operator"
@@ -12,6 +12,12 @@
       asterisk_db_password: "{{ lookup('env', 'ASTERISK_DB_PASSWORD') }}"
       asterisk_db_name: "asterisk"
       asterisk_ip_address: "127.0.0.1"
+      users:
+        - login: "admin"
+          pass: "password"
+          is_admin: true
+        - login: "user"
+          pass: "password"
       # Apache2 settings
       apache_remove_default_vhost: true
       apache_vhosts:
