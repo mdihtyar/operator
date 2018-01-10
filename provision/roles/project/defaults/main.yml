@@ -1,7 +1,7 @@
 ---
   project_name: "operator"
   project_folder: "../../"
-  source_folder: "{{ project_folder }}/web_interface"
+  source_folder: "{{ project_folder }}/source"
   project_tmp_folder: "/var/{{ project_name }}/tmp"
   tmp_folder_mode: "0700"
   tmp_folder_owner: "www-data"

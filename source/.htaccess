@@ -1,0 +1,6 @@
+# Deny web server generate a file list for current and all child folders.
+# If someone requires to get such ability, then enable Indexes options below.
+
+Options -Indexes
+
+php_flag display_errors on

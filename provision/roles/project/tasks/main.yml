@@ -18,7 +18,7 @@
       dest: "{{ item }}"
     with_items: "{{ configuration_templates }}"
 
-  - name: "Restoring operator DB scheme."
+  - name: "Loading operator DB scheme."
     mysql_db:
       name: "{{ operator_db_name }}"
       login_user: "{{ operator_db_user }}"

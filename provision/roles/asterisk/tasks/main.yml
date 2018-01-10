@@ -1,0 +1,8 @@
+---
+  - name: "Loading Asterisk DB scheme."
+    mysql_db:
+      name: "{{ asterisk_db_name }}"
+      login_user: "{{ asterisk_db_user }}"
+      login_password: "{{ asterisk_db_password }}"
+      state: import
+      target: "{{ asterisk_db_scheme_file }}"

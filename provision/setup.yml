@@ -39,10 +39,17 @@
           host: "localhost"
           password: "{{ operator_db_password }}"
           priv: "{{ operator_db_name }}.*:ALL"
+          append_privs: true
+        - name: "{{ operator_db_user }}"
+          host: "localhost"
+          password: "{{ operator_db_password }}"
+          priv: "{{ asterisk_db_name }}.*:ALL"
+          append_privs: true
         - name: "{{ asterisk_db_user }}"
           host: "localhost"
           password: "{{ asterisk_db_password }}"
           priv: "{{ asterisk_db_name }}.*:ALL"
+          append_privs: true
 
     pre_tasks:
       - debug:
