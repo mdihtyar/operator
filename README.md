@@ -1,4 +1,5 @@
-# Operator [![Build Status](https://travis-ci.org/mdihtyar/operator.svg?branch=master)](https://travis-ci.org/mdihtyar/operator)
+# Operator 
+[![Build Status](https://travis-ci.org/mdihtyar/operator.svg?branch=master)](https://travis-ci.org/mdihtyar/operator)
 
 Status: **in development**
 
