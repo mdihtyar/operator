@@ -13,8 +13,6 @@
       name: "{{ item }}"
       state: present
     with_items: "{{ asterisk_packages }}"
-    notify:
-      - "Restart IP-PBX Asterisk"
     tags: ["asterisk"]
 
   - name: "Disable pbx_ael.so module."
