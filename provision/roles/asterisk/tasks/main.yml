@@ -6,3 +6,28 @@
       login_password: "{{ asterisk_db_password }}"
       state: import
       target: "{{ asterisk_db_scheme_file }}"
+    tags: ["asterisk"]
+
+  - name: "Installing packages."
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ asterisk_packages }}"
+    notify:
+      - "Restart IP-PBX Asterisk"
+    tags: ["asterisk"]
+
+  - name: "Disable pbx_ael.so module."
+    lineinfile:
+      path: "{{ asterisk_modules_config }}"
+      line: "noload => pbx_ael.so"
+      insertbefore: "[global]"
+      state: present
+      backup: yes
+    tags: ["asterisk"]
+
+  - name: "Restart IP-PBX Asterisk."
+    service:
+      name: "asterisk"
+      state: restarted
+    tags: ["asterisk"]
