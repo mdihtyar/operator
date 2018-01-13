@@ -7,12 +7,11 @@ cd $(dirname $0)
 ANSIBLE_VERSION="2.4"
 VERSION=$([ -e version ] && echo $(cat version)$(printf ".";git rev-parse --short=16 HEAD || echo "") || echo "unknown")
 PROJECT_FOLDER=$(pwd)
+CONFIG_FILE=.env
 
-if [ -e ".env" ]; then
-    source .env
-    export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    export OPERATOR_DB_PASSWORD=${OPERATOR_DB_PASSWORD}
-    export ASTERISK_DB_PASSWORD=${ASTERISK_DB_PASSWORD}
+if [ -e "${CONFIG_FILE}" ]; then
+    source ${CONFIG_FILE}
+    for VAR in `cat ${CONFIG_FILE} | awk -F "=" '{ print $1 }'`; do  CMD="export $VAR=\$$VAR"; eval "export $VAR=\$$VAR"; done;
 fi
 
 # Common functions
