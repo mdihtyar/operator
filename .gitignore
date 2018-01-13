@@ -2,3 +2,4 @@
 *.log
 *.retry
 operator/conf/main_conf.php
+.env

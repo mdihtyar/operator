@@ -1,4 +1,4 @@
-# Operator 
+# Operator
 [![Build Status](https://travis-ci.org/mdihtyar/operator.svg?branch=master)](https://travis-ci.org/mdihtyar/operator)
 
 Status: **in development**
@@ -32,6 +32,12 @@ $ export OPERATOR_DB_PASSWORD=operator_db_password
 $ export ASTERISK_DB_PASSWORD=asterisk_db_password
 
 $ ./install.sh
+
+Also it is possible to create config file for installation, that can contain these above described values.
+```shell
+$ cp .env.example .env
+$ name .env
+```
 
 ```
 

@@ -8,6 +8,13 @@ ANSIBLE_VERSION="2.4"
 VERSION=$([ -e version ] && echo $(cat version)$(printf ".";git rev-parse --short=16 HEAD || echo "") || echo "unknown")
 PROJECT_FOLDER=$(pwd)
 
+if [ -e ".env" ]; then
+    source .env
+    export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    export OPERATOR_DB_PASSWORD=${OPERATOR_DB_PASSWORD}
+    export ASTERISK_DB_PASSWORD=${ASTERISK_DB_PASSWORD}
+fi
+
 # Common functions
 # ------------------------------------------------------------------------------
 function msg {
