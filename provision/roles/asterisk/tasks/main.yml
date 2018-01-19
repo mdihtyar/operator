@@ -28,6 +28,10 @@
     template:
       src: "{{ item | basename }}.j2"
       dest: "{{ item }}"
+      mode: "0600"
+      owner: "{{ asterisk_user_name }}"
+      group: "{{ asterisk_group_name }}"
+      backup: yes
     with_items:
       - "/etc/asterisk/sip.conf"
 
