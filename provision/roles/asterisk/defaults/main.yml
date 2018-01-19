@@ -13,3 +13,22 @@ asterisk_packages:
 
 asterisk_config_folder: "/etc/asterisk"
 asterisk_modules_config: "{{ asterisk_config_folder }}/modules.conf"
+
+# Allow registering as GSM sip user
+allow_only_from: "192.168.33.199/255.255.255.255"
+
+gsm_in_user: "gsm-in"
+# gsm_in_password: ""
+gsm1_out_user: "gsm1-out"
+# gsm1_out_password: ""
+gsm2_out_user: "gsm2-out"
+# gsm2_out_password: ""
+gsm3_out_user: "gsm3-out"
+# gsm3_out_password: ""
+gsm4_out_user: "gsm4-out"
+# gsm4_out_password: ""
+
+sip_users:
+  - number: "201"
+    password: "set_new_password_please"
+    role: "Operator"

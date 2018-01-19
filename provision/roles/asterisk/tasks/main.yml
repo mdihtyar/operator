@@ -24,6 +24,13 @@
       backup: yes
     tags: ["asterisk"]
 
+  - name: "Generating asterisk configuration files."
+    template:
+      src: "{{ item | basename }}.j2"
+      dest: "{{ item }}"
+    with_items:
+      - "/etc/asterisk/sip.conf"
+
   - name: "Restart IP-PBX Asterisk."
     service:
       name: "asterisk"

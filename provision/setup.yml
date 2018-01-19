@@ -3,6 +3,7 @@
     become: true
     vars:
       version: "unknown"
+      default_password: "password"
       project_folder: "{{ lookup('pipe', 'pwd') }}"
       source_folder: "{{ project_folder }}/source"
       operator_db_user: "operator"
@@ -14,10 +15,10 @@
       asterisk_ip_address: "127.0.0.1"
       users:
         - login: "admin"
-          pass: "password"
+          pass: "{{ default_password }}"
           is_admin: true
         - login: "user"
-          pass: "password"
+          pass: "{{ default_password }}"
       # Apache2 settings
       apache_remove_default_vhost: true
       apache_vhosts:
@@ -50,6 +51,21 @@
           password: "{{ asterisk_db_password }}"
           priv: "{{ asterisk_db_name }}.*:ALL"
           append_privs: true
+      gsm_in_password: "{{ default_password }}"
+      gsm1_out_password: "{{ default_password }}"
+      gsm2_out_password: "{{ default_password }}"
+      gsm3_out_password: "{{ default_password }}"
+      gsm4_out_password: "{{ default_password }}"
+      sip_users:
+        - number: "201"
+          password: "{{ default_password }}"
+          role: "Operator"
+        - number: "202"
+          password: "{{ default_password }}"
+          role: "Operator"
+        - number: "203"
+          password: "{{ default_password }}"
+          role: "Operator"
 
     pre_tasks:
       - debug:

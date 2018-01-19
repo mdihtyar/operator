@@ -34,6 +34,7 @@ $ export ASTERISK_DB_PASSWORD=asterisk_db_password
 $ ./install.sh
 
 Also it is possible to create config file for installation, that can contain these above described values.
+
 ```shell
 $ cp .env.example .env
 $ name .env
