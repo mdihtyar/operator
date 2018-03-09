@@ -10,10 +10,10 @@
     $user = new Users($_LSET);
 
     $print_user_interface = true;
-    $simple_user_interface = false; // simple user interface mode
+    $simple_user_interface = false; // Simple user interface mode
 
     $user_id = ($user->UserExistByID($session->id_user))?$session->id_user:-1;
-    $adwindow = ""; // define variable of additional window
+    $adwindow = ""; // Define variable of additional window
     // If something wrong with sessions, then it is required to reinit the session of user
     if (($user_id!=$session->id_user)) {
         $session->StopSession();
@@ -21,7 +21,7 @@
     }
     //
     $tmas = array();
-    $buffer = ""; // here is will be stored content, what is required to show on display
+    $buffer = ""; // Here is will be stored content, what is required to show on display
     $possible_message = "";
     $return_button = "";
     //
@@ -40,13 +40,13 @@
 
     // Main user's menu, receive variable buffer
     if (($user_id==-1) && ($buffer=="")) {
-        // cleanup date, that was stored in current session, because there should not be any data instead of data about session
+        // Cleanup data, that was stored in current session, because there should not be any data instead of data about session
         include "login.php";
         //
     } elseif ($buffer=="") {
         include "main_window.php";
     }
-    //  interface
+    //  Interface
     if ($print_user_interface) {
         $tmas["header"] = $lang["System_title"];
         $tmas["body"]=$buffer; unset($buffer);
@@ -57,7 +57,7 @@
         $tmas["return_button"]=$return_button;
         // ------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------------------------------------------------------------------
-        // check, it is possible, the it is required to be shown simple user interface
+        // Check, maybe it is required to be shown simple user interface
         if ($simple_user_interface) {
           $tmpl->DisableBlocks(array("with_interface"),true,true);
           $tmas["body_style"] = "id=\"simple_interface_body\"";

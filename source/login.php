@@ -1,5 +1,5 @@
 <?php
-    // check, does not been launch this script directly, providing of secure using of scripts
+    // Check, does not been launch this script directly, providing of secure using scripts
     if(!defined( 'CONSTANT' )) { die; }
     //
     $tmpl1 = new Template($_LSET["tmpl_login"],$lang);
