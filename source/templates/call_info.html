@@ -1,0 +1,40 @@
+<div style='text-align: right;'>%return_button%</div>
+<hr>
+<center>
+<h3>%call_info_title%</h3>
+<table border='0px'>
+
+<tr class='my_tr'><td class='SimpleParameter'>%calldate_title%:</td><td class='SimpleParameterLeft'>%calldate%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%clid_title%:</td><td class='SimpleParameterLeft'>%clid%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%src_title%:</td><td class='SimpleParameterLeft'>%src%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%dst_title%:</td><td class='SimpleParameterLeft'>%dst%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%duration_title%:</td><td class='SimpleParameterLeft'>%duration%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%billsec_title%:</td><td class='SimpleParameterLeft'>%billsec%</td></tr>
+<!-- tried_info begin -->
+<tr class='my_tr'><td class='SimpleParameter'>%calling_count_title%:</td><td class='SimpleParameterLeft'>%calling_count%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%tried_count_title%:</td><td class='SimpleParameterLeft'>%tried_count%</td></tr>
+<tr class='my_tr'><td class='SimpleParameter'>%when_last_tried%:</td><td class='SimpleParameterLeft'>%when_tried%</td></tr>
+<!-- tried_info end -->
+<tr class='my_tr'><td class='SimpleParameter'>%disposition_title%:</td><td class='SimpleParameterLeft'>%disposition%</td></tr>
+<!-- listen_call_record begin -->
+<tr>
+<td class='SimpleParameter' style='vertical-align: top;'>%listen_a_call_record%:</td>
+<td class='SimpleParameterleft'>
+    <audio controls>
+	<source src="%call_record_url%" type="audio/x-wav">
+    </audio>
+</td>
+</tr>
+<tr><td class='SimpleParameter' style='vertical-align: middle;'>%download_call_record%,<br>%filesize%:</td>
+<td height='100px'><a href='%call_record_url%' title='%download_call_record%'>
+<img src="%download_img%" id='SaveZoneButton' class='default_zone_download_button_img'        
+onmousedown='document.getElementById("SaveZoneButton").className = "click_zone_download_button_img";' 
+onmouseup='document.getElementById("SaveZoneButton").className = "default_zone_download_button_img";' 
+onmouseout='document.getElementById("SaveZoneButton").className = "default_zone_download_button_img";'>
+</a> </td></tr>
+<!-- listen_call_record end -->
+</table>
+</center>
+<br>
+<hr>
+<div style='text-align: right;'>%return_button%</div>

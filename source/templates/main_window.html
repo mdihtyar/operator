@@ -1,0 +1,150 @@
+<table width='100%' class='RightTableStyle' border='0px'>
+<tr>
+<td>%user_greeting%</td>
+<td align='right'>%logout%</td>
+</tr>
+<tr>
+<td colspan=2><hr>%possible_message%</td>
+</tr>
+<tr>
+<td colspan=2 width='100%' class='SimpleTitle'>%header_title1%</td>
+</tr>
+<tr>
+<td colspan=2>
+<!-- -->
+<center>
+<table class='RightTableStyle' width='90%' border='0px'>
+<td align='center'>
+<div id="line1" class="FreeLineStatus">1</div> &nbsp; 
+</td>
+<td align='center'>
+<div id="line2" class="FreeLineStatus">2</div> &nbsp;
+</td>
+<td align='center'>
+<div id="line3" class="FreeLineStatus">3</div> &nbsp;
+</td>
+<td align='center'>
+<div id="line4" class="FreeLineStatus">4</div> &nbsp;
+</td>
+</tr>
+<tr height='35px'>
+<td align='center'><div id="line1_title"></div></td>
+<td align='center'><div id="line2_title"></div></td>
+<td align='center'><div id="line3_title"></div></td>
+<td align='center'><div id="line4_title"></div></td>
+</tr>
+</table>
+</center>
+<!-- LINE STATUS DETECTING -->
+<script type="text/javascript">
+var status_request = new XMLHttpRequest();
+var line = 0;
+var cstatus = 0;
+setInterval(function () {
+for (line = 1; line <= 4; line++ ) {
+status_request.open('GET','%line_status_url%'+line,false);
+status_request.send();
+if ( status_request.status != 200 ) {
+    alert( status_request.status + ': ' + status_request.statusText);
+} else {
+    cstatus = + status_request.responseText;
+    indicator = document.getElementById("line"+line);
+    line_title = document.getElementById("line"+line+"_title");
+    
+    switch (cstatus) {
+	case 0 :
+	    if (indicator.className != "FreeLineStatus") 
+		indicator.className = "FreeLineStatus";
+		line_title.innerHTML="";
+	    break;
+	case 1 :
+	    if (indicator.className != "IncomingCallStatus") {
+		indicator.className = "IncomingCallStatus";
+		//
+		status_request.open('GET','%line_status_url%'+line+'&channel_description',false);
+		status_request.send();
+		if (status_request.status != 200) {
+		    alert( status_request.status + ': ' + status_request.statusText);
+		} else {
+		    channel_description = status_request.responseText;
+		    line_title.innerHTML = channel_description;
+		}
+		//
+	    }
+	    break;
+	case 2 :
+	    if (indicator.className != "BusyLineStatus") {
+		indicator.className = "BusyLineStatus";
+	    }
+	    break;
+	default:
+	    indicator.className = "FreeLineStatus";
+	    line_title.innerHTML="";
+    }
+    // 
+    
+}
+}
+// перевіримо фрейми
+    
+}, 1000);
+
+</script>
+<!-- -->
+
+<!-- -->
+</td>
+</tr>
+<tr>
+<td colspan=2><hr></td>
+</tr>
+<tr>
+<td colspan=2 class='SimpleTitle'>%header_title2%</td>
+</tr>
+<tr>
+<td class='CallLogsStyle'>
+<!-- -->
+<iframe id='unprocessed_calls' width='100%' height='100%' frameborder='0' border='0' src='%unprocessed_calls_page_url%'></iframe>
+<!-- -->
+</td>
+<td class='CallLogsStyle'>
+<!-- -->
+<iframe id='processed_calls' width='100%' height='100%' frameborder='0' border='0' src='%processed_calls_page_url%'></iframe>
+<!-- -->
+</td>
+</tr>
+</table>
+<script type='text/javascript'>
+    var unprocessed_cfrm = document.getElementById("unprocessed_calls");
+    var processed_cfrm = document.getElementById("processed_calls");
+    var unprocessed_hash = "";
+    var processed_hash = "";
+    
+setInterval(function () {
+    status_request.open('GET',processed_cfrm.src+"&hash",false);
+    status_request.send();
+    if ( status_request.status != 200 ) {
+	alert( status_request.status + ': ' + status_request.statusText);
+    } else {
+	hash = status_request.responseText;
+	if (processed_hash!=hash) {
+	    processed_cfrm.src = processed_cfrm.src;
+	    processed_hash = hash;
+	}
+    }
+    status_request.open('GET',unprocessed_cfrm.src+"&hash",false);
+    status_request.send();
+    if ( status_request.status != 200 ) {
+	alert( status_request.status + ': ' + status_request.statusText);
+    } else {
+	hash = status_request.responseText;
+	if (unprocessed_hash!=hash) {
+	    unprocessed_cfrm.src = unprocessed_cfrm.src;
+	    unprocessed_hash = hash;
+	}
+    }
+
+}, 5000);    
+
+</script>
+

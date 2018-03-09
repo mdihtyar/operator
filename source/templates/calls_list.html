@@ -1,0 +1,22 @@
+<!-- template-script begin -->
+<script>
+var topLocation = function(url) {
+    // make sure its a relative url
+    if (url[0] === '/' && url[1] !== '/'){
+        // x-broswer window.location.origin 
+        if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
+        window.top.location = window.location.origin + url;
+    } else {
+        window.top.location = url;
+    }
+}
+</script>
+<!-- template-script end -->
+<table width="100%" border="0px" class='RightTableStyle'>
+<p align='center'><b>%calls_list_title%</b></p>
+<tr class='RightHeaderStyle'>
+<td>#</td><td>%call_date%</td><td>%calling_number%</td><td title='%calling_count_description%'>%calling_count%</td>
+</tr>
+%calls_list%
+</table>
+<center><pre>%page_selector%</pre></center>
