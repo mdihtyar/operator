@@ -1,0 +1,297 @@
+
+#user_interface_body { 
+    font-family: 'Verdana', Times, serif; 
+    font-size: 10pt; 
+    background-color: #f6f6f6; 
+    background-image: url('images/background.gif');
+}
+
+#simple_interface_body { 
+    font-family: 'Verdana', Times, serif; 
+    font-size: 10pt; 
+}
+
+.BODY_CALL_LOGS {
+    background-color: #becb98;
+}
+
+.call_logs_iframe : {
+    border-style: none;
+}
+
+A:active { COLOR: #0000cc;}
+
+A:hover { COLOR: #000066; }
+
+A.MainMenu {font-weight: 600; COLOR: #000066; TEXT-DECORATION: none; }
+
+A.MainMenu:link { COLOR: #000066; }
+
+A.MainMenu:visited { COLOR: #000066; } 
+
+A.MainMenu:active { COLOR: #000066; }
+
+A.MainMenu:hover { COLOR: #000066; }
+
+A.AddressLine {font-size: 8pt; font-weight: 600; COLOR: #0e4999; TEXT-DECORATION: none; }
+
+A.AddressLine:link { COLOR: #0e4999; }
+
+A.AddressLine:visited { COLOR: #0e4999; } 
+
+A.AddressLine:active { COLOR: #0e4999; }
+
+A.AddressLine:hover { COLOR: white; }
+
+.MainTableStyle {
+    width: 70%;
+    top: 20px;
+}
+
+.HeaderStyle {
+    font-size: 12pt;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #0e4999; 
+    color: #ffffff;    
+}
+
+.LeftStyle {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 30%;
+    font-size: 10pt;
+    vertical-align: top; 
+    background-color: #becb98; 
+    color: #000000;
+    border-width: 1px;
+    border-style: solid solid solid solid;
+}
+
+.RightStyle {
+    font-size: 10pt;
+    height: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: top; 
+    background-color: #cfdca9; 
+    color: #000000;
+    border-width: 1px;
+    border-style: solid solid solid solid;
+    
+}
+
+.LoginTextStyle {
+    font-size: 11pt;
+    text-align: center;
+    width: 100%;
+}
+
+.FooterStyle {
+    font-size: 10pt; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.TimeStyle {
+    font-size: 10pt;
+    text-align: right;
+    padding-bottom: 10px;
+    vertical-align: bottom;
+}
+
+.MainMenuLIStyle {
+    padding-top: 10px;
+}
+
+.MessageStyle {
+    font-size: 12pt;
+    font-weight: bold; 
+    text-align: center;   
+    width: 50%;
+    border-width: 1px;
+    border-style: dotted dotted dotted dotted;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: blue;
+    background-color: #becb98; 
+}
+
+.RightTableStyle {
+    font-size: 10pt;    
+}
+
+.RightHeaderStyle {
+    font-size: 10pt; 
+    text-align: center; 
+    background-color: gray; 
+    color: white;
+}
+
+.SimpleHeader {
+    font-size: 10pt;    
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.SimpleParameter {
+    font-size: 10pt;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.SimpleParameterLeft {
+    font-size: 10pt;
+    text-align: left;
+}
+
+.SimpleTitle {
+    text-align: center;
+    font-weight: bold; 
+    padding: 10px;   
+}
+
+.ItemDiv {
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+tr.my_tr:hover { background-color: #becb98;}
+
+tr.my_tr_reverse:hover { background-color: #cfdca9;}
+
+span.my_span:hover { background-color: #becb98; cursor: pointer; }
+
+.FreeLineStatus {
+	box-shadow: 0 0 10px rgba(0,0,0,5.5); 
+	padding: 0px; 
+	border-radius: 100px;
+	width: 100px;
+	height: 100px;
+	background-color: green;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 25pt;
+	color: white;
+	# float: left;
+	#margin: 10px;
+}
+
+.IncomingCallStatus {
+        -webkit-animation-name: blinker;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+	-moz-animation-name: blinker;
+	-moz-animation-duration: 1s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	animation-name: blinker;
+	animation-duration: 1s;
+	animation-timing-function: linear; 
+	animation-iteration-count: infinite;
+	color: black;
+	
+	box-shadow: 0 0 10px rgba(0,0,0,5.5); 
+	padding: 0px; 
+	border-radius: 100px;
+	width: 100px;
+	height: 100px;
+	background-color: yellow;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 25pt;
+	#
+	# float: left;
+	#margin: 10px;
+}
+
+.BusyLineStatus {
+	box-shadow: 0 0 10px rgba(0,0,0,5.5); 
+	padding: 0px; 
+	border-radius: 100px;
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 25pt;
+	color: white;
+	# float: left;
+	#margin: 10px;
+}
+
+.CallLogsStyle {
+    border: 1px solid grey; 
+    width: 50%; 
+    height: 300px; 
+    vertical-align: top; 
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,4.5); 
+    background-color: #becb98;
+}
+
+.default_zone_download_button_img {
+        box-shadow: 0 0 10px rgba(0,0,0,5.5); 
+        padding: 5px; 
+        border-radius: 100px;
+        cursor: pointer;
+}
+
+.click_zone_download_button_img {
+        box-shadow: 0 0 10px rgba(0,0,0,5.5); 
+        padding: 3px; 
+        border-radius: 100px;
+        cursor: pointer;
+
+}
+
+.blink_text { 
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite;  
+} 
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; } 
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; } 
+} 
+
+@keyframes blinker {  
+    0% { opacity: 1.0; } 
+    50% { opacity: 0.0; }      
+    100% { opacity: 1.0; } 
+} 
+
+ 
