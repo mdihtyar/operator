@@ -21,7 +21,7 @@ if ((isset($_GET["mode"]) && ($_GET["mode"]==$_LSET["ptmp_phone_book"])) && ($us
         if (($aname == "") || ($anumber == "")) {
             $possible_message = $msg->ShowMessage($lang["Not_all_fields"]."!",false);
         } else {
-            // checking, does there already exists identified data in phone book
+            // checking, if there are already exists identified data in phone book
             if (($ast->PhoneNumberExist($anumber,$id_list))) {
                 //
                 $possible_message = $msg->ShowMessage($lang["Record_is_exist"]."!",false);
