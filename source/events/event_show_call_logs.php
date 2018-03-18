@@ -135,7 +135,7 @@ if ((isset($_GET["mode"]) && ($_GET["mode"]==$_LSET["ptmp_show_call_logs"])) && 
         }
     }
     elseif (isset($_GET["submode"]) && ($_GET["submode"]==$_LSET["ptmp_all"])) {
-        $buffer = "Перелік усіх дзвінків";
+        $buffer = $lang["list_of_all_calls"];
     }
     if ($buffer!="") {
         $simple_user_interface = true;
